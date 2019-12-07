@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WBSDAL", "WBSDAL\WBSDAL.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WBSAPI", "WBSAPI\WBSAPI.csproj", "{84E58753-85FE-46A4-BB79-9D3519BCB400}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WBSView", "WBSView\WBSView.csproj", "{23CC33A6-9802-4537-B472-464025F78714}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{84E58753-85FE-46A4-BB79-9D3519BCB400}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84E58753-85FE-46A4-BB79-9D3519BCB400}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84E58753-85FE-46A4-BB79-9D3519BCB400}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23CC33A6-9802-4537-B472-464025F78714}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23CC33A6-9802-4537-B472-464025F78714}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23CC33A6-9802-4537-B472-464025F78714}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23CC33A6-9802-4537-B472-464025F78714}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
