@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Show";
+}
+@using WBSModel;
+@model List<Tb_OrderInfo>
+<h2>Show</h2>
+<table>
+    <tr>
+        <td>订单号</td>
+        <td>下单日期</td>
+        <td>客户ID</td>
+        <td>订单状态</td>
+        <td>收获人表</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.OrderInfoID</td>
+            <td>@item.OrderInfoTime</td>
+            <td>@item.MemberID</td>
+            <td>@item.OrderInfoStat</td>
+            <td>@item.ConsigneeID</td>
+            <td>@Html.ActionLink("详情","")</td>
+        </tr>
+    }
+</table>
+

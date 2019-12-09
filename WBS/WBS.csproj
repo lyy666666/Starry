@@ -166,11 +166,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Htdd\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Htdd\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -184,6 +184,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WBSBLL\WBSBLL.csproj">
+      <Project>{dd1f0e31-ce2f-40f4-a1f8-ae294d406491}</Project>
+      <Name>WBSBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WBSModel\WBSModel.csproj">
+      <Project>{1E5C07A2-E394-4B24-91A5-4EB56B170D88}</Project>
+      <Name>WBSModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

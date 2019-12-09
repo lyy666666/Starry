@@ -7,9 +7,13 @@ using System.Threading.Tasks;
 namespace WBSModel
 {
     /// <summary>
-    /// 订单
+    /// 订单明细表
     /// </summary>
     class Tb_SaleNum
     {
+        public int SaleNumID { get; set; }
+        public int OrderInfoID { get; set; }
+        public int GoodsID { get; set; }
+        public int SaleNumState { get; set; }
     }
 }

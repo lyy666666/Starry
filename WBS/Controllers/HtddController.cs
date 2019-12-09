@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Net.Http;
 using System.IO;
+using WBSModel;
+using Newtonsoft.Json;
 
 namespace WBS.Controllers
 {
@@ -14,14 +16,24 @@ namespace WBS.Controllers
         #region 后台订单显示
         public ActionResult Show()
         {
-            string Url="";
+            string url="";
             HttpClient  http = new HttpClient();
-            HttpResponseMessage message = http.GetAsync(Url);
-            string sql = message.Content.ReadAsByteArrayAsync().Result;
-
-            return View();
+            HttpResponseMessage message = http.GetAsync(url).Result;
+            string sql = message.Content.ReadAsStringAsync().Result;
+            List<Tb_OrderInfo> list = JsonConvert.DeserializeObject<List<Tb_OrderInfo>>(sql);
+            return View(list);
         }
-	    #endregion
-        
+        #endregion
+        #region 订单明细
+        public ActionResult MxShow()
+        {
+            string url = "";
+            HttpClient http = new HttpClient();
+            HttpResponseMessage message = http.GetAsync(url).Result;
+            string sql = message.Content.ReadAsStringAsync().Result;
+            List<Tb_SaleNum> list = JsonConvert.DeserializeObject<List<Tb_SaleNum>>(sql);
+            return View(list);
+        }
+        #endregion
     }
 }
