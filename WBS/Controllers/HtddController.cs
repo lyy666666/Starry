@@ -11,7 +11,7 @@ namespace WBS.Controllers
         // GET: Htdd
         public ActionResult Index()
         {
-
+            JavaScript;
             return View();
         }
     }
