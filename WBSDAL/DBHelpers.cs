@@ -17,7 +17,7 @@ namespace WBSDAL
         /// 连接数据库字符串
         /// </summary>
         //static string strConn = "Data Source=DESKTOP-PF3RFAF;Initial Catalog=NewsRelease;Integrated Security=True;pwd=456";
-        static string strConn = ConfigurationManager.ConnectionStrings["Conn"].ToString()
+        static string strConn = ConfigurationManager.ConnectionStrings["Conn"].ToString();
 
         //web.config获取，先添加system.configuration.dll
         //string _webconfig = System.Configuration.ConfigurationSettings.AppSettings["配置名称"];//会提示已过期
