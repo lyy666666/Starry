@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Web;
+using WBSDAL;
 
 namespace WBSBLL
 {

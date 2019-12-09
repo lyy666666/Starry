@@ -44,5 +44,11 @@
     <Compile Include="Genaricity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WBSDAL\WBSDAL.csproj">
+      <Project>{562D839E-8E6F-47BC-81F2-CA9F73FCA3B8}</Project>
+      <Name>WBSDAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
