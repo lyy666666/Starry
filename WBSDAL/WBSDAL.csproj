@@ -36,6 +36,7 @@
       <HintPath>..\..\..\..\..\软件\专高一\MonthDome0506\MonthMvc\bin\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
