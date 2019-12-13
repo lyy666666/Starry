@@ -180,6 +180,20 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WBSBLL\WBSBLL.csproj">
+      <Project>{dd1f0e31-ce2f-40f4-a1f8-ae294d406491}</Project>
+      <Name>WBSBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WBSDAL\WBSDAL.csproj">
+      <Project>{562d839e-8e6f-47bc-81f2-ca9f73fca3b8}</Project>
+      <Name>WBSDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WBSModel\WBSModel.csproj">
+      <Project>{1e5c07a2-e394-4b24-91a5-4eb56b170d88}</Project>
+      <Name>WBSModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
