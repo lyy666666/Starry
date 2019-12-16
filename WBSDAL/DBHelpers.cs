@@ -192,12 +192,12 @@ namespace WBSDAL
         /// <param name="Parms"></param>
         /// <param name="OutName">@totalcount输出参数</param>
         /// <returns></returns>
-        public static List<T> ExecProcGetResult<T>(string ProcName, Dictionary<string, object> Parms, out string OutName)
+        public static List<T> ExecProcGetResult<T>(string ProcName, Dictionary<string, object> Parms, out int OutName)
         {
             using (SqlConnection conn = new SqlConnection(strConn))
             {
 
-                OutName = "@totalcount";
+                
                 conn.Open();
 
                 SqlCommand command = new SqlCommand();
@@ -215,7 +215,7 @@ namespace WBSDAL
                     parm.ParameterName = item.Key;
 
                     //判断是不是输出参数
-                    if (item.Key.ToLower().Equals(OutName))
+                    if (item.Key.ToLower().Equals("@outcount"))
                     {
                         parm.Direction = ParameterDirection.Output;
                         parm.Size = 50;
@@ -234,8 +234,8 @@ namespace WBSDAL
                 dataAdapter.Dispose();
 
                 //返回输出参数
-                object o = command.Parameters[OutName].Value;
-                OutName = o.ToString();
+                int o = Convert.ToInt32(command.Parameters["@outcount"].Value);
+                OutName = o;
 
                 //关闭连接
                 conn.Close();
