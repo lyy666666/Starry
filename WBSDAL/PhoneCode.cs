@@ -41,7 +41,7 @@ namespace WBSDAL
             {
                 CommonResponse response = client.GetCommonResponse(request);
                 Console.WriteLine(System.Text.Encoding.Default.GetString(response.HttpResponse.Content));
-                return qq;
+                return da;
             }
             catch (ServerException e)
             {
