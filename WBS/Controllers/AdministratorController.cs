@@ -44,7 +44,7 @@ namespace WBS.Controllers
             //{
             //     cookie = new HttpCookie("Cooks");
             //}
-            string code = WBSDAL.PhoneCode.Code(Phone);
+            string code = "123456";//WBSDAL.PhoneCode.Code(Phone);
             Session["code"] = code;
             //cookie.Value = code;
             //cookie.Expires = DateTime.Now.AddMinutes(5);
@@ -58,7 +58,7 @@ namespace WBS.Controllers
             //HttpCookie cookie = Request.Cookies["Cooks"];
             //string Code =cookie.Value;
           string c=  Session["code"].ToString();
-            if (pnum.Equals(c))
+            if (pnum==c)
             {
                 Response.Write("<script>alert('登录成功');location.href='/Administrator/Index';</script>");
             }

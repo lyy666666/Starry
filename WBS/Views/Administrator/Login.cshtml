@@ -38,7 +38,11 @@
                 </h1>
                 <div class="mallSearch">
                     <form action="" class="layui-form" novalidate="">
-                        <input type="text" name="title" required="" lay-verify="required" autocomplete="off" class="layui-input" placeholder="请输入需要的商品">
+                        <input type="text" name="title" required="" lay-verify="required" autocomplete="off" xdclass="layui-input" placeholder="请输入需要的商品">
+
+
+
+
                         <button class="layui-btn" lay-submit="" lay-filter="formDemo">
                             <i class="layui-icon layui-icon-search"></i>
                         </button>
@@ -86,8 +90,8 @@
                             </div>
                         </div>
                         <div class="layui-form-item login-btn">
-                            <div class="layui-input-block"><input id="Submit1" type="submit" value="后台代码登录" />
-                                <button class="layui-btn" lay-submit="" lay-filter="demo1" onclick="return false">登录</button>
+                            <div class="layui-input-block"><input id="Submit1" class="layui-btn" type="submit" value="后台代码登录" />
+                                @*<button class="layui-btn" lay-submit="" lay-filter="demo1" onclick="return false">登录</button>*@
                             </div>
                             
                         </div>
@@ -131,31 +135,39 @@
 
 
             $("#find").click(function () {
-                if (!/^1\d{10}$/.test($("#phone").val())) {
-                    layer.msg("请输入正确的手机号");
-                    return false;
-                }
-                var obj = this;
-                $.ajax({
-                    type: "get",
-                    url: "/Administrator/DengLu?Phone=" + $("#phone").val(),
-                    dataType: "json",//返回的
-                    success: function (data) {
+                //if (!/^1\d{10}$/.test($("#phone").val())) {
+                //    layer.msg("请输入正确的手机号");
+                //    return false;
+                //}
+                
 
-                        if (data.result) {
-                            $("#find").addClass(" layui-btn-disabled");
-                            $('#find').attr('disabled', "true");
-                            settime(obj);
-                            $("#msg").text(data.msg);
-                        } else {
-                            layer.msg(data.msg);
+
+                    $.ajax({
+                        type: "get",
+                        url: "/Administrator/DengLu?Phone=" + $("#phone").val(),
+                        dataType: "json",//返回的
+
+                        success: function (data) {
+                            console.log('right:'+data);
+                            if (data.result) {
+                                $("#find").addClass(" layui-btn-disabled");
+                                $('#find').attr('disabled', "true");
+                                settime(this);
+
+                                $("#msg").text(data.msg);
+                            } else {
+                                layer.msg(data.msg);
+                            }
+                        },
+                        error: function (msg) {
+                            console.log('erro:'+msg);
                         }
-                    },
-                    error: function (msg) {
-                        console.log(msg);
-                    }
-                });
-            })
+                    });
+                
+                })
+        
+            });
+        
             var countdown = 60;
             function settime(obj) {
                 if (countdown == 0) {
@@ -165,18 +177,19 @@
                     countdown = 60;
                     return;
                 } else {
-
+                    obj.setAttribute("disabled", true);
                     obj.value = "重新发送(" + countdown + ")";
                     countdown--;
+
+                    setTimeout(function () {
+                        settime(obj)
+                    }
+                        , 1000)
                 }
-                setTimeout(function () {
-                    settime(obj)
-                }
-                    , 1000)
             }
-        });
+       
 
-
+        document.getElementById("find").onclick = function () { settime(this); }
 
 
 
