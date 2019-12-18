@@ -1,0 +1,51 @@
+﻿@model List<WBSModel.Tb_GoodsInfo>
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/layui/layui.js"></script>
+@*<link href="~/layui/css/layui.css" rel="stylesheet" />*@
+<table class="table-bordered table" style="text-align:center">
+    <thead style="background-color:aquamarine">
+        <tr>
+            <td>商品名称</td>
+            <td>是否显示</td>
+            <td>价格</td>
+            <td>重量</td>
+            <td>详情</td>
+            <td>状态</td>
+            <td>浏览量</td>
+            <td>销售量</td>
+            <td>评价数量</td>
+            <td>类型</td>
+            <td>是否包邮</td>
+            <td>操作</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.GoodsName</td>
+                <td>@(s.GoodsDisplay == 0 ? "显示" : "No")</td>
+                <td>@s.GoodsPrice</td>
+                <td>@s.GoodsWeight</td>
+                <td>@s.GoodsRemark</td>
+                <td>@s.GoodsState</td>
+                <td>@s.GoodsBorwseNum</td>
+                <td>@s.GoodsSaleNum</td>
+                <td>@s.GoodsEvaluaNum</td>
+                <td>@s.CommodTypeID</td>
+                <td>@s.GoodsFreight</td>
+                <td>
+                    @Html.ActionLink("修改", null)
+                    @Html.ActionLink("删除", null)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Index/index/?pageindex=1">首页</a>
+<a href="/Index/index/?pageindex=@ViewBag.PagePro">上一页</a>
+<a href="/Index/index/?pageindex=@ViewBag.PageNext">下一页</a>
+<a href="/Index/index/?pageindex=@ViewBag.PageList">尾页</a>

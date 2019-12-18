@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -15,13 +16,14 @@ namespace WBSDAL
         /// <summary>
         /// 连接数据库字符串
         /// </summary>
-        static string strConn = "Data Source=DESKTOP-PF3RFAF;Initial Catalog=NewsRelease;Integrated Security=True;pwd=456";
+        //static string strConn = "Data Source=DESKTOP-PF3RFAF;Initial Catalog=NewsRelease;Integrated Security=True;pwd=456";
+        static string strConn = ConfigurationManager.ConnectionStrings["Conn"].ToString();
 
         //web.config获取，先添加system.configuration.dll
         //string _webconfig = System.Configuration.ConfigurationSettings.AppSettings["配置名称"];//会提示已过期
-        
+
         //string _webconfig2 = System.Configuration.ConfigurationManager.AppSettings["配置名称"];
-        
+
 
         /// <summary>
         /// 执行添加、修改、删除的SQL语句，返回受影响行数
@@ -190,12 +192,12 @@ namespace WBSDAL
         /// <param name="Parms"></param>
         /// <param name="OutName">@totalcount输出参数</param>
         /// <returns></returns>
-        public static List<T> ExecProcGetResult<T>(string ProcName, Dictionary<string, object> Parms, out string OutName)
+        public static List<T> ExecProcGetResult<T>(string ProcName, Dictionary<string, object> Parms, out int OutName)
         {
             using (SqlConnection conn = new SqlConnection(strConn))
             {
 
-                OutName = "@totalcount";
+                
                 conn.Open();
 
                 SqlCommand command = new SqlCommand();
@@ -213,7 +215,7 @@ namespace WBSDAL
                     parm.ParameterName = item.Key;
 
                     //判断是不是输出参数
-                    if (item.Key.ToLower().Equals(OutName))
+                    if (item.Key.ToLower().Equals("@outcount"))
                     {
                         parm.Direction = ParameterDirection.Output;
                         parm.Size = 50;
@@ -232,8 +234,8 @@ namespace WBSDAL
                 dataAdapter.Dispose();
 
                 //返回输出参数
-                object o = command.Parameters[OutName].Value;
-                OutName = o.ToString();
+                int o = Convert.ToInt32(command.Parameters["@outcount"].Value);
+                OutName = o;
 
                 //关闭连接
                 conn.Close();
